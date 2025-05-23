@@ -1,1 +1,2 @@
-# new-resolve.github.io
+# DECEPT.GOLD
+## Convert attacks into rewards
