@@ -16,9 +16,10 @@
       font-family: 'Rajdhani', sans-serif;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      /* background-image: url('https://images.unsplash.com/photo-1636955851744-7b5be51c2356?auto=format&fit=crop&w=1950&q=80'); */
+      background-image: url('bg.jpg?auto=format&fit=crop&w=1950&q=80'); 
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -26,6 +27,7 @@
       text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
       padding: 20px;
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -36,14 +38,98 @@
       text-transform: uppercase;
     }
 
+    .contract-container {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      flex-wrap: wrap;
+    }
+
+    .contract-container input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      font-family: 'Rajdhani', sans-serif;
+      outline: none;
+      width: 400px;
+    }
+
+    .copy-btn {
+      background-color: #444;
+      border: 1px solid #888;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .copy-btn:hover {
+      background-color: #666;
+    }
+
+    .links {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background 0.3s;
+    }
+
+    .links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 12vw;
+      }
+      .contract-container input {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Them more attacks,<p/> the more revenue.</h1>
+  <h1>The more attacks,<br/>the more revenue.</h1>
+
+  <div class="contract-container">
+    <input type="text" id="contract" readonly value="0x606c0fE69D437F42BfC11D3eec82F596cC02C02a">
+    <button class="copy-btn" onclick="copyContract()">Copiar</button>
+  </div>
+
+  <div class="links">
+    <a href="https://github.com/New-Resolve/deceptgold/blob/master/documentation/whitepaper.md" target="_blank">📄 Whitepaper</a>
+    <a href="https://testnet.bscscan.com/token/0x606c0fE69D437F42BfC11D3eec82F596cC02C02a" target="_blank">🔍 Ver no Explorer</a>
+  </div>
+
+  <script>
+    function copyContract() {
+      const input = document.getElementById('contract');
+      input.select();
+      input.setSelectionRange(0, 99999); 
+      document.execCommand("copy");
+    }    
+  </script>
 </body>
 </html>
