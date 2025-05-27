@@ -142,11 +142,13 @@
 
   <script>
     function copyContract() {
-      const input = document.getElementById('contract');
-      input.select();
-      input.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-    }
+  const input = document.getElementById('contract');
+  navigator.clipboard.writeText(input.value).then(() => {
+    alert('Contrato copiado!');
+  }).catch(err => {
+    console.error('Erro ao copiar: ', err);
+  });
+}
   </script>
 </body>
 </html>
