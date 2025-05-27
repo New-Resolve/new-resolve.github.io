@@ -12,35 +12,37 @@
       box-sizing: border-box;
     }
 
-    body {
+    body, html {
+      height: 100%;
+      overflow: hidden;
       font-family: 'Rajdhani', sans-serif;
+    }
+
+    .background-blur {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
       height: 100vh;
+      background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: blur(6px);
+      z-index: -1;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;      
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      align-items: center;
       color: #ffffff;
       text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
       padding: 20px;
       text-align: center;
       position: relative;
     }
-    body::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      left: -10%;
-      width: 120%;
-      height: 120%;
-      background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      filter: blur(12px);
-      z-index: -1;
-    }
+
     h1 {
       font-size: 8vw;
       max-width: 90%;
@@ -115,6 +117,7 @@
       h1 {
         font-size: 12vw;
       }
+
       .contract-container input {
         width: 100%;
       }
@@ -122,6 +125,8 @@
   </style>
 </head>
 <body>
+  <div class="background-blur"></div>
+
   <h1>The more attacks,<br/>the more revenue.</h1>
 
   <div class="contract-container">
@@ -138,9 +143,9 @@
     function copyContract() {
       const input = document.getElementById('contract');
       input.select();
-      input.setSelectionRange(0, 99999); 
+      input.setSelectionRange(0, 99999);
       document.execCommand("copy");
-    }    
+    }
   </script>
 </body>
 </html>
