@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>  
+<head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-81LDMD127M"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
+    gtag('js', new Date());  
     gtag('config', 'G-81LDMD127M');
   </script>
   <meta charset="UTF-8">
@@ -19,29 +18,30 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body, html {
       height: 100%;
       overflow: hidden;
       font-family: 'Rajdhani', sans-serif;
-      background: #000; /* Define um fundo preto sólido para evitar bordas brancas */
+      background: #000; /* Fundo preto como fallback */
     }
-    
+
     .background-blur {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
+      background-image: url('bg_world.jpg'); /* Ajuste o caminho correto da imagem */
+      /* Para teste, use uma imagem online: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920') */
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat; /* Garante que a imagem não se repita */
+      background-repeat: no-repeat;
       filter: blur(6px);
       z-index: -1;
-      transform: scale(1.1); /* Aumenta ligeiramente a imagem para evitar bordas visíveis devido ao desfoque */
+      transform: scale(1.05); /* Reduzido para evitar distorções excessivas */
     }
-    
+
     body {
       display: flex;
       flex-direction: column;
@@ -153,13 +153,13 @@
 
   <script>
     function copyContract() {
-  const input = document.getElementById('contract');
-  navigator.clipboard.writeText(input.value).then(() => {
-    alert('Contrato copiado!');
-  }).catch(err => {
-    console.error('Erro ao copiar: ', err);
-  });
-}
+      const input = document.getElementById('contract');
+      navigator.clipboard.writeText(input.value).then(() => {
+        alert('Contrato copiado!');
+      }).catch(err => {
+        console.error('Erro ao copiar: ', err);
+      });
+    }
   </script>
 </body>
 </html>
