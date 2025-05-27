@@ -8,11 +8,6 @@
     gtag('js', new Date());  
     gtag('config', 'G-81LDMD127M');
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NTD4K3WK');</script>  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deceptgold</title>
@@ -28,7 +23,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       height: 100%;
       overflow: hidden;
       font-family: 'Rajdhani', sans-serif;
-      background: #000; /* Fundo preto como fallback */
     }
 
     .background-blur {
@@ -37,13 +31,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-image: url('bg_world.jpg'); /* Ajuste o caminho correto da imagem */
-      /* Para teste, use uma imagem online: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920') */
+      background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
       filter: blur(6px);
-      z-index: -1;      
+      z-index: -1;
     }
 
     body {
@@ -53,26 +45,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       align-items: center;
       color: #ffffff;
       text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
+      padding: 20px;
       text-align: center;
       position: relative;
-      margin: 0;
-      min-height: 100vh;
     }
 
-    body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
-  background-size: cover;
-  background-position: center;
-  filter: blur(6px);
-  z-index: -1;
-  transform: scale(1.1);
-}
-    
     h1 {
       font-size: 8vw;
       max-width: 90%;
@@ -155,10 +132,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTD4K3WK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
   <div class="background-blur"></div>
 
   <h1>The more attacks,<br/>the more revenue.</h1>
@@ -176,12 +149,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script>
     function copyContract() {
       const input = document.getElementById('contract');
-      navigator.clipboard.writeText(input.value).then(() => {
-        alert('Contrato copiado!');
-      }).catch(err => {
-        console.error('Erro ao copiar: ', err);
-      });
+      input.select();
+      input.setSelectionRange(0, 99999);
+      document.execCommand("copy");
     }
   </script>
 </body>
-</html>
+</html>  
