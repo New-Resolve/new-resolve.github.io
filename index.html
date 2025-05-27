@@ -16,13 +16,14 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body, html {
       height: 100%;
       overflow: hidden;
       font-family: 'Rajdhani', sans-serif;
+      background: #000; /* Define um fundo preto sólido para evitar bordas brancas */
     }
-
+    
     .background-blur {
       position: fixed;
       top: 0;
@@ -32,10 +33,12 @@
       background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat; /* Garante que a imagem não se repita */
       filter: blur(6px);
       z-index: -1;
+      transform: scale(1.1); /* Aumenta ligeiramente a imagem para evitar bordas visíveis devido ao desfoque */
     }
-
+    
     body {
       display: flex;
       flex-direction: column;
