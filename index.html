@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-repeat: no-repeat;
       filter: blur(6px);
       z-index: -1;
-      transform: scale(1.05); /* Reduzido para evitar distorções excessivas */
+      transform: scale(1.05); 
     }
 
     body {
@@ -60,6 +60,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       min-height: 100vh;
     }
 
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('bg_world.jpg?auto=format&fit=crop&w=1950&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px);
+  z-index: -1;
+  transform: scale(1.1);
+}
+    
     h1 {
       font-size: 8vw;
       max-width: 90%;
