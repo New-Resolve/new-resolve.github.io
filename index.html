@@ -94,7 +94,7 @@
     .copy-btn:hover {
       background-color: #666;
     }
-
+    
     .links {
       position: absolute;
       bottom: 20px;
@@ -129,6 +129,78 @@
         width: 100%;
       }
     }
+    
+  .download-section {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .download-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    letter-spacing: 2px;
+  }
+
+  .download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .download-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 25px;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 160px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  .download-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 12px rgba(255,255,255,0.2);
+  }
+
+  .icon-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    .download-btn {
+      width: 120px;
+      padding: 16px;
+    }
+
+    .icon-wrapper {
+      width: 60px;
+      height: 60px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -141,10 +213,43 @@
     <button class="copy-btn" onclick="copyContract()">Copiar</button>
   </div>
 
-  <div class="links">
+
+<div class="download-section">
+  <div class="download-buttons">
+    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.73/deceptgold-0.1.73.msi" class="download-btn" target="_blank">
+      <div class="icon-wrapper">
+        <img src="https://img.icons8.com/color/96/000000/windows-10.png" alt="Windows" />
+      </div>
+      Windows
+    </a>
+
+    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.73/deceptgold_0.1.73-1.debian-bookworm_amd64.deb" class="download-btn" target="_blank">
+      <div class="icon-wrapper">
+        <img src="https://img.icons8.com/color/96/000000/debian.png" alt="Debian" />
+      </div>
+      Debian
+    </a>
+
+    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.73/deceptgold_0.1.73-1.ubuntu-noble_amd64.deb" class="download-btn" target="_blank">
+      <div class="icon-wrapper">
+        <img src="https://img.icons8.com/color/96/000000/ubuntu--v1.png" alt="Ubuntu" />
+      </div>
+      Ubuntu
+    </a>
+
+    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.66/deceptgold-0.1.66-1.fc40.x86_64.rpm" class="download-btn" target="_blank">
+      <div class="icon-wrapper">
+        <img src="https://img.icons8.com/fedora.png" alt="Fedora" />
+      </div>
+      Fedora
+    </a>
+  </div>
+</div>
+
+<div class="links">
     <a href="https://github.com/New-Resolve/deceptgold/blob/master/documentation/whitepaper.md" target="_blank">📄 Whitepaper</a>
     <a href="https://testnet.bscscan.com/token/0x606c0fE69D437F42BfC11D3eec82F596cC02C02a" target="_blank">🔍 Ver no Explorer</a>
-  </div>
+</div>
 
   <script>
     function copyContract() {
@@ -157,4 +262,4 @@
     }
   </script>
 </body>
-</html>  
+</html>
