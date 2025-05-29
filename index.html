@@ -226,7 +226,7 @@
 
   <div class="contract-container">
     <input type="text" id="contract" readonly value="0x606c0fE69D437F42BfC11D3eec82F596cC02C02a">
-    <button class="copy-btn" onclick="copyContract()">Copiar</button>
+    <button class="copy-btn btn_evnt" data-label="Copiar" onclick="copyContract()">Copiar</button>
   </div>
 
 
@@ -276,6 +276,16 @@
       const img = new Image();
       img.src = "http://canarytokens.com/feedback/images/gc4t94y8d49jqr576dvcrn7v9/post.jsp";    
     }
+    
+  document.querySelectorAll('.btn_evnt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      gtag('event', 'button_event', {
+        'event_category': 'iteration',
+        'event_label': this.dataset.label
+      });
+    });
+  });
+  
   </script>
 </body>
 </html>
