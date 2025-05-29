@@ -201,10 +201,26 @@
       height: 60px;
     }
   }
+  
+  #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      /* filter: blur(2px);  */
+}
+
   </style>
 </head>
 <body>
-  <div class="background-blur"></div>
+  
+  
+    <video autoplay muted loop playsinline id="background-video">
+      <source src="attack_map.mp4" type="video/mp4">
+    </video>
 
   <h1>The more attacks,<br/>the more revenue.</h1>
 
@@ -237,7 +253,7 @@
       Ubuntu
     </a>
 
-    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.73/deceptgold-0.1.73-1.fc40.x86_64.rpm" class="download-btn" target="_blank">
+    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.66/deceptgold-0.1.66-1.fc40.x86_64.rpm" class="download-btn" target="_blank">
       <div class="icon-wrapper">
         <img src="https://img.icons8.com/fedora.png" alt="Fedora" />
       </div>
