@@ -279,7 +279,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
   document.querySelectorAll('.btn_evnt').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      gtag('event', 'button_event', {
+      dataLayer.push({
+        'event': 'button_event',
         'event_category': 'iteration',
         'event_label': this.dataset.label
       });
