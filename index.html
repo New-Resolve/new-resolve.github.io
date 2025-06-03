@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-81LDMD127M"></script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -60,46 +60,80 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .contract-container {
       margin-top: 20px;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
       background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
+      padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(4px);
-      flex-wrap: wrap;
+      max-width: 400px;
+      flex-wrap: nowrap;
     }
 
-    .contract-container input {
-      background: transparent;
-      border: none;
+    .contract-container .contract-text {
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: 'Rajdhani', sans-serif;
-      outline: none;
-      width: 400px;
+      width: 150px;
+      white-space: nowrap;
     }
 
-    .copy-btn {
+    .copy-btn, .metamask-btn {
       background-color: #444;
       border: 1px solid #888;
       color: #fff;
-      padding: 6px 12px;
+      padding: 6px;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .copy-btn:hover {
+    .copy-btn:hover, .metamask-btn:hover {
       background-color: #666;
     }
-    
+
+    .network-select {
+      background-color: #444;
+      border: 1px solid #888;
+      color: #fff;
+      padding: 6px;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      width: 48px;
+      height: 40px;
+      background-position: left 6px center, right 6px center;
+      background-repeat: no-repeat;
+      background-size: 32px, 12px;
+    }
+
+    .network-select:hover {
+      background-color: #666;
+    }
+
+    .network-select option {
+      background-color: #444;
+      padding: 0;
+      text-align: center;
+    }
+
+    .network-select option img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+
     .links {
       position: absolute;
       bottom: 20px;
       right: 20px;
       display: flex;
-      flex-direction: column;
+      /*flex-direction: column;*/
       align-items: flex-end;
       gap: 10px;
     }
@@ -124,84 +158,100 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         font-size: 12vw;
       }
 
-      .contract-container input {
-        width: 100%;
+      .contract-container {
+        max-width: 280px;
+      }
+
+      .contract-container .contract-text {
+        width: 100px;
+        font-size: 0.9rem;
+      }
+
+      .network-select {
+        width: 40px;
+        height: 36px;
+        background-size: 24px, 10px;
+      }
+
+      .network-select option img {
+        width: 24px;
+        height: 24px;
       }
     }
     
-  .download-section {
-    margin-top: 50px;
-    text-align: center;
-  }
+    .download-section {
+      margin-top: 50px;
+      text-align: center;
+    }
 
-  .download-section h2 {
-    font-size: 2.2rem;
-    margin-bottom: 25px;
-    color: #fff;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-    letter-spacing: 2px;
-  }
+    .download-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+      letter-spacing: 2px;
+    }
 
-  .download-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-  }
+    .download-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
 
-  .download-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px 25px;
-    border-radius: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: bold;
-    width: 160px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    transition: transform 0.2s, background 0.3s;
-  }
-
-  .download-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-  }
-
-  .icon-wrapper {
-    width: 80px;
-    height: 80px;
-    background: #fff;
-    border-radius: 16px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-    box-shadow: 0 0 12px rgba(255,255,255,0.2);
-  }
-
-  .icon-wrapper img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  @media (max-width: 600px) {
     .download-btn {
-      width: 120px;
-      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 25px;
+      border-radius: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      width: 160px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .download-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
     }
 
     .icon-wrapper {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
     }
-  }
+
+    .icon-wrapper img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 600px) {
+      .download-btn {
+        width: 120px;
+        padding: 16px;
+      }
+
+      .icon-wrapper {
+        width: 60px;
+        height: 60px;
+      }
+    }
   
-  #background-video {
+    #background-video {
       position: fixed;
       top: 0;
       left: 0;
@@ -209,84 +259,183 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       min-height: 100vh;
       object-fit: cover;
       z-index: -1;
-      /* filter: blur(2px);  */
-}
-
+    }
   </style>
 </head>
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTD4K3WK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
-    <video autoplay muted loop playsinline id="background-video">
-      <source src="attack_map.mp4" type="video/mp4">
-    </video>
+  <video autoplay muted loop playsinline id="background-video">
+    <source src="attack_map.mp4" type="video/mp4">
+  </video>
 
   <h1>The more attacks,<br/>the more revenue.</h1>
 
+    <div class="download-section">
+        <div class="download-buttons">
+          <a id="windows-download" class="download-btn" target="_blank">
+            <div class="icon-wrapper btn_evnt" data-label="Download Windows">
+              <img src="https://img.icons8.com/color/96/000000/windows-10.png" alt="Windows" />
+            </div>
+            Windows
+          </a>
+
+          <a id="debian-download" class="download-btn" target="_blank">
+            <div class="icon-wrapper btn_evnt" data-label="Download Debian">
+              <img src="https://img.icons8.com/color/96/000000/debian.png" alt="Debian" />
+            </div>
+            Debian
+          </a>
+
+          <a id="ubuntu-download" class="download-btn" target="_blank">
+            <div class="icon-wrapper btn_evnt" data-label="Download Ubuntu">
+              <img src="https://img.icons8.com/color/96/000000/ubuntu--v1.png" alt="Ubuntu" />
+            </div>
+            Ubuntu
+          </a>
+
+          <a id="fedora-download" class="download-btn" target="_blank">
+            <div class="icon-wrapper btn_evnt" data-label="Download Fedora">
+              <img src="https://img.icons8.com/fedora.png" alt="Fedora" />
+            </div>
+            Fedora
+          </a>
+        </div>
+    </div>
+    
+
   <div class="contract-container">
-    <input type="text" id="contract" readonly value="0x606c0fE69D437F42BfC11D3eec82F596cC02C02a">
-    <button class="copy-btn btn_evnt" data-label="Copiar" onclick="copyContract()">Copy</button>
+    <select class="network-select btn_evnt" data-label="Network Select" onchange="updateContractDisplay(this.value)">
+      <option value="eth" data-icon="https://img.icons8.com/color/48/000000/ethereum.png">
+        <img src="https://img.icons8.com/color/48/000000/ethereum.png" alt="Ethereum" />
+      </option>
+    </select>
+    <span class="contract-text" id="contract"></span>
+    <button class="copy-btn btn_evnt" data-label="Copy Contract" onclick="copyContract()">
+      <img src="https://img.icons8.com/material-outlined/24/ffffff/copy.png" alt="Copy" style="width: 20px; height: 20px;" />
+    </button>
+    <button class="metamask-btn btn_evnt" data-label="Add to Metamask" onclick="addToMetamask()">
+      <img src="https://img.icons8.com/color/48/000000/metamask-logo.png" alt="Metamask" style="width: 20px; height: 20px;" />
+    </button>
   </div>
 
-
-<div class="download-section">
-  <div class="download-buttons">
-    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.80/deceptgold-0.1.80.msi" class="download-btn" target="_blank">
-      <div class="icon-wrapper btn_evnt" data-label="Download Windows">
-        <img src="https://img.icons8.com/color/96/000000/windows-10.png" alt="Windows" />
-      </div>
-      Windows
-    </a>
-
-    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.80/deceptgold_0.1.80-1.debian-bookworm_amd64.deb" class="download-btn" target="_blank">
-      <div class="icon-wrapper btn_evnt" data-label="Download Debian">
-        <img src="https://img.icons8.com/color/96/000000/debian.png" alt="Debian" />
-      </div>
-      Debian
-    </a>
-
-    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.80/deceptgold_0.1.80-1.ubuntu-noble_amd64.deb" class="download-btn" target="_blank">
-      <div class="icon-wrapper btn_evnt" data-label="Download ubuntu">
-        <img src="https://img.icons8.com/color/96/000000/ubuntu--v1.png" alt="Ubuntu" />
-      </div>
-      Ubuntu
-    </a>
-
-    <a href="https://github.com/New-Resolve/deceptgold/releases/download/v0.1.80/deceptgold-0.1.80-1.fc40.x86_64.rpm" class="download-btn" target="_blank">
-      <div class="icon-wrapper btn_evnt" data-label="Download Fedora">
-        <img src="https://img.icons8.com/fedora.png" alt="Fedora" />
-      </div>
-      Fedora
-    </a>
-  </div>
-</div>
-
-<div class="links">
+  <div class="links">
     <a href="https://github.com/New-Resolve/deceptgold/blob/master/documentation/whitepaper.md" class="btn_evnt" data-label="Whitepaper" target="_blank">📄 Whitepaper</a>
     <a href="https://testnet.bscscan.com/token/0x606c0fE69D437F42BfC11D3eec82F596cC02C02a" class="btn_evnt" data-label="Explorer" target="_blank">🔍 View in Explorer</a>
-</div>
+  </div>
 
   <script>
-    function copyContract() {
-      const input = document.getElementById('contract');
-      input.select();
-      input.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-      const img = new Image();
-      img.src = "http://canarytokens.com/feedback/images/gc4t94y8d49jqr576dvcrn7v9/post.jsp";    
+    async function updateDownloadLinks() {
+      try {
+        const response = await fetch('https://api.github.com/repos/New-Resolve/deceptgold/releases/latest');
+        if (!response.ok) {
+          throw new Error('Erro ao buscar a última release');
+        }
+        const data = await response.json();
+        const assets = data.assets;
+
+        // Mapear os arquivos esperados pelos seus nomes (ajuste conforme necessário)
+        const filePatterns = {
+          windows: /\.msi$/,
+          debian: /\.debian-bookworm_amd64\.deb$/,
+          ubuntu: /\.ubuntu-noble_amd64\.deb$/,
+          fedora: /\.fc40\.x86_64\.rpm$/
+        };
+
+        // Atualizar os links dos botões
+        for (const [platform, pattern] of Object.entries(filePatterns)) {
+          const asset = assets.find(asset => pattern.test(asset.name));
+          if (asset) {
+            const link = document.getElementById(`${platform}-download`);
+            link.href = asset.browser_download_url;
+          } else {
+            console.warn(`Arquivo para ${platform} não encontrado na última release`);
+            // Opcional: desativar o botão se o arquivo não for encontrado
+            const link = document.getElementById(`${platform}-download`);
+            link.style.opacity = '0.5';
+            link.style.pointerEvents = 'none';
+            link.title = 'Download indisponível';
+          }
+        }
+      } catch (error) {
+        console.error('Erro ao atualizar links de download:', error);
+        // Opcional: lidar com o erro, como ocultar a seção de downloads ou mostrar uma mensagem
+      }
     }
+
+    // Executar a função ao carregar a página
+    document.addEventListener('DOMContentLoaded', updateDownloadLinks);
     
-  document.querySelectorAll('.btn_evnt').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      dataLayer.push({
-        'event': 'button_event',
-        'event_category': 'iteration',
-        'event_label': this.dataset.label
+    const contractAddresses = {
+      eth: "0x606c0fE69D437F42BfC11D3eec82F596cC02C02a"
+    };
+
+    let currentNetwork = 'eth';
+
+    function truncateAddress(address) {
+      return address.slice(0, 6) + "..." + address.slice(-6);
+    }
+
+    function updateContractDisplay(network) {
+      currentNetwork = network;
+      const contractText = document.getElementById('contract');
+      contractText.textContent = truncateAddress(contractAddresses[network]);
+      const select = document.querySelector('.network-select');
+      const icon = select.options[select.selectedIndex].getAttribute('data-icon');
+      select.style.backgroundImage = `url('${icon}'), url('https://img.icons8.com/material-outlined/24/ffffff/expand-arrow--v1.png')`;
+      select.style.backgroundSize = '32px, 12px';
+      select.style.backgroundPosition = 'left 1px center, right 6px center';
+    }
+
+    function copyContract() {
+      const contractAddress = contractAddresses[currentNetwork];
+      navigator.clipboard.writeText(contractAddress).then(() => {
+        const img = new Image();
+        img.src = "http://canarytokens.com/feedback/images/gc4t94y8d49jqr576dvcrn7v9/post.jsp";
+      });
+    }
+
+    async function addToMetamask() {
+      const contractAddress = contractAddresses[currentNetwork];
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+              type: 'ERC20',
+              options: {
+                address: contractAddress,
+                symbol: 'DCPT',
+                decimals: 18,
+              },
+            },
+          });
+          dataLayer.push({
+            'event': 'button_event',
+            'event_category': 'iteration',
+            'event_label': 'Add to Metamask'
+          });
+        } catch (error) {
+          console.error('Error adding to Metamask:', error);
+        }
+      } else {
+        alert('Metamask não está instalado. Por favor, instale o Metamask para usar esta função.');
+      }
+    }
+
+    document.querySelectorAll('.btn_evnt').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        dataLayer.push({
+          'event': 'button_event',
+          'event_category': 'iteration',
+          'event_label': this.dataset.label
+        });
       });
     });
-  });
-  
+
+    // Initialize contract display
+    updateContractDisplay('eth');
   </script>
 </body>
 </html>
