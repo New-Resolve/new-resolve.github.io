@@ -422,7 +422,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           console.error('Error adding to Metamask:', error);
         }
       } else {
-        alert('Metamask não está instalado. Por favor, instale o Metamask para usar esta função.');
+        alert('Metamask is not installed. Please install Metamask to use this feature..');
       }
     }
 
@@ -436,7 +436,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
 
-    // Initialize contract display
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.btn_evnt').forEach(function (el) {
+        el.addEventListener('click', function () {
+          const label = el.getAttribute('data-label') || 'botao-clicado';
+          if (typeof umami !== 'undefined' && umami.track) {
+            umami.track(label);
+          }
+        });
+      });
+    });
+    
     updateContractDisplay('eth');
   </script>
 </body>
