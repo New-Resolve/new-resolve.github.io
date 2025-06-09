@@ -3,12 +3,6 @@
 <head>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="629cb4ba-11b5-4b6f-b02e-657d8b6aba61"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-81LDMD127M"></script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NTD4K3WK');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deceptgold</title>
@@ -265,8 +259,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTD4K3WK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <video autoplay muted loop playsinline id="background-video">
     <source src="attack_map.mp4" type="video/mp4">
@@ -332,41 +324,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       try {
         const response = await fetch('https://api.github.com/repos/New-Resolve/deceptgold/releases/latest');
         if (!response.ok) {
-          throw new Error('Erro ao buscar a última release');
+          throw new Error('Error in get last release,');
         }
         const data = await response.json();
         const assets = data.assets;
-
-        // Mapear os arquivos esperados pelos seus nomes (ajuste conforme necessário)
+        
         const filePatterns = {
           windows: /\.msi$/,
           debian: /\.debian-bookworm_amd64\.deb$/,
           ubuntu: /\.ubuntu-noble_amd64\.deb$/,
           fedora: /\.fc40\.x86_64\.rpm$/
         };
-
-        // Atualizar os links dos botões
+        
         for (const [platform, pattern] of Object.entries(filePatterns)) {
           const asset = assets.find(asset => pattern.test(asset.name));
           if (asset) {
             const link = document.getElementById(`${platform}-download`);
             link.href = asset.browser_download_url;
           } else {
-            console.warn(`Arquivo para ${platform} não encontrado na última release`);
-            // Opcional: desativar o botão se o arquivo não for encontrado
+            console.warn(`File to ${platform} not exists.`);            
             const link = document.getElementById(`${platform}-download`);
             link.style.opacity = '0.5';
             link.style.pointerEvents = 'none';
-            link.title = 'Download indisponível';
+            link.title = 'Download failed';
           }
         }
       } catch (error) {
-        console.error('Erro ao atualizar links de download:', error);
-        // Opcional: lidar com o erro, como ocultar a seção de downloads ou mostrar uma mensagem
+        console.error('Error updating download links:', error);      
       }
     }
-
-    // Executar a função ao carregar a página
+    
     document.addEventListener('DOMContentLoaded', updateDownloadLinks);
     
     const contractAddresses = {
