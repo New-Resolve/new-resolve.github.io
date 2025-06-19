@@ -134,6 +134,80 @@
       .download-btn{width:120px;padding:16px}
       .icon-wrapper{width:60px;height:60px}
     }
+    
+    #contact-button {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: linear-gradient(135deg, #06f, #0cf);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,.4);
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 999;
+      transition: background 0.3s ease;
+    }
+    #contact-button:hover {
+      background: linear-gradient(135deg, #0cf, #06f);
+    }
+
+    #contact-popup {
+      position: fixed;
+      bottom: 90px;
+      left: 30px;
+      background: #111;
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      width: 260px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      z-index: 998;
+    }
+    #contact-popup a {
+      text-decoration: none;
+      color: #0cf;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .divider {
+      height: 1px;
+      background: #333;
+      margin: 10px 0;
+    }
+    #email-form {
+      display: flex;
+      flex-direction: column;
+    }
+    #email-form input,
+    #email-form textarea {
+      background: #222;
+      border: 1px solid #444;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      color: white;
+      font-family: inherit;
+    }
+    #email-form button {
+      background: #0cf;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #email-form button:hover {
+      background: #09f;
+    }
+    #form-status {
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
   </style>
 </head>
 <body>
@@ -207,9 +281,30 @@
   </div>
   
   <br/><br/><br/>
-  <img src="deceptgold_service.gif" alt="Animação"
-     style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+  <img src="deceptgold_service.gif" alt="honeypot commands service" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+  <br/><br/><br/>
   
+  <a id="contact-button" class="btn" style="position: fixed; bottom: 30px; left: 30px; z-index: 999; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.2); padding: 6px 12px; border-radius: 6px; color: #fff; text-decoration: none;">📨 Contact Us</a>
+
+  
+  <div id="contact-popup" style="display:none; position: fixed; bottom: 90px; left: 30px; background: #111; padding: 12px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.6); width: 280px; z-index: 998;">
+    <div style="display: flex; justify-content: space-between; gap: 10px; margin-bottom: 10px;">
+      <a href="https://wa.me/5521972750119" target="_blank" style="flex: 1; text-align: center; background: #075e54; color: white; padding: 8px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+        <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" style="vertical-align: middle; margin-right: 4px;">WhatsApp
+      </a>
+      <a href="https://t.me/jonathansmorais" target="_blank" style="flex: 1; text-align: center; background: #229ED9; color: white; padding: 8px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+        <img src="https://img.icons8.com/ios-filled/20/ffffff/telegram-app.png" style="vertical-align: middle; margin-right: 4px;">Telegram
+      </a>
+    </div>
+    <form id="email-form" style="display: flex; flex-direction: column;">
+      <input type="text" name="name" placeholder="Your name" required style="margin-bottom: 8px; padding: 8px; background: #222; border: 1px solid #444; border-radius: 6px; color: white;">
+      <input type="email" name="email" placeholder="Your email" required style="margin-bottom: 8px; padding: 8px; background: #222; border: 1px solid #444; border-radius: 6px; color: white;">
+      <textarea name="message" placeholder="Write your message..." rows="3" required style="margin-bottom: 8px; padding: 8px; background: #222; border: 1px solid #444; border-radius: 6px; color: white;"></textarea>
+      <button type="submit" style="padding: 8px; border: none; border-radius: 6px; background: #0cf; color: white; font-weight: bold; cursor: pointer;">Send</button>
+      <p id="form-status" style="font-size: 0.85rem; margin-top: 6px;"></p>
+    </form>
+  </div>
+
   <script>
     const networks = {
       eth: {
@@ -332,6 +427,41 @@
         document.getElementById('options-container').style.display = 'none';
       }
     });
-  </script>
+ </script>
+ 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">(function(){emailjs.init({publicKey: "4G8MPUpAVNQ2aUQaV",});})();</script>
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("contact-button");
+      const popup = document.getElementById("contact-popup");
+      const form = document.getElementById("email-form");
+      const status = document.getElementById("form-status");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        popup.style.display = popup.style.display === "block" ? "none" : "block";
+      });
+
+      form.addEventListener("submit", (e) => {
+		  e.preventDefault();
+		  status.textContent = "Sending...";
+
+		  emailjs.sendForm('service_9e2wfdx', 'template_upgni6j', form)
+			.then(() => {
+			  console.log("Email enviado com sucesso!");	
+			  status.textContent = "Message sent. We will contact you.";
+			  form.reset();
+			})
+			.catch((err) => {
+			  console.error('EmailJS error:', err);
+			  status.textContent = "Error contacting.";
+			});
+		});
+    });
+  </script>  
+
 </body>
 </html>
