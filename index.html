@@ -275,7 +275,7 @@
     </button>
   </div>
 
-  <div class="links">
+  <div class="links">	
     <a href="https://github.com/New-Resolve/deceptgold/blob/master/documentation/whitepaper.md" class="btn" data-label="Whitepaper" target="_blank">📄 Whitepaper</a>
     <a href="https://testnet.bscscan.com/token/0x606c0fE69D437F42BfC11D3eec82F596cC02C02a" class="btn" data-label="Explorer" target="_blank">🔍 Explorer</a>
   </div>
@@ -284,6 +284,7 @@
   <img src="deceptgold_service.gif" alt="honeypot commands service" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
   <br/><br/><br/>
   
+
   <a id="contact-button" class="btn" style="position: fixed; bottom: 30px; left: 30px; z-index: 999; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.2); padding: 6px 12px; border-radius: 6px; color: #fff; text-decoration: none;">📨 Contact Us</a>
 
   
@@ -442,6 +443,9 @@
 
       btn.addEventListener("click", (e) => {
         e.preventDefault();
+        if (typeof umami !== 'undefined' && umami.track) {
+		umami.track("Contact Button");
+	}
         popup.style.display = popup.style.display === "block" ? "none" : "block";
       });
 
