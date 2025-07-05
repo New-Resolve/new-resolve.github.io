@@ -249,20 +249,11 @@
         <span id="current-label">Ethereum</span>
       </div>
       <div class="options-container" id="options-container">
-        <div class="option" data-value="eth" onclick="selectNetwork('eth')">
+        <div class="option" data-value="eth" onclick="selectNetwork('eth', true)">
           <img src="https://img.icons8.com/color/48/000000/ethereum.png" alt="Ethereum"> ETH
         </div>
-        <div class="option" data-value="bsc" onclick="selectNetwork('bsc')">
+        <div class="option" data-value="bsc" onclick="selectNetwork('bsc', true)">
           <img src="https://img.cryptorank.io/coins/60x60.bnb1732530324407.png" alt="Binance Smart Chain"> BSC
-        </div>
-        <div class="option" data-value="trx" onclick="selectNetwork('trx')">
-          <img src="https://img.cryptorank.io/coins/60x60.tron1608810047161.png" alt="TRX"> TRX
-        </div>
-        <div class="option" data-value="sol" onclick="selectNetwork('sol')">
-          <img src="https://img.cryptorank.io/coins/60x60.solana1606979093056.png" alt="TRX"> SOL
-        </div>
-        <div class="option" data-value="ava" onclick="selectNetwork('ava')">
-          <img src="https://img.cryptorank.io/coins/60x60.avalanche1629705441155.png" alt="AVA"> AVA
         </div>
       </div>
     </div>
@@ -317,22 +308,7 @@
         label: 'BSC',
         icon: 'https://img.cryptorank.io/coins/60x60.bnb1732530324407.png',
         contract: '0x606c0fE69D437F42BfC11D3eec82F596cC02C02a'
-      },
-      trx: {
-        label: 'TRX',
-        icon: 'https://img.cryptorank.io/coins/60x60.tron1608810047161.png',
-        contract: '0x606c0fE69D437F42BfC11D3eec82F596cC02C02a'
-      },
-      sol: {
-        label: 'SOL',
-        icon: 'https://img.cryptorank.io/coins/60x60.solana1606979093056.png',
-        contract: '0x0000000000000000000000000000000000000000'
-      },
-      ava: {
-        label: 'AVA',
-        icon: 'https://img.cryptorank.io/coins/60x60.avalanche1629705441155.png',
-        contract: '0x606c0fE69D437F42BfC11D3eec82F596cC02C02a'
-      }      
+      }    
     };
 
     async function updateDownloadLinks() {
@@ -374,17 +350,18 @@
       optC.style.display = optC.style.display === 'block' ? 'none' : 'block';
     }
 
-    function selectNetwork(key) {
-      current = key;
-      const info = networks[key];
-      document.getElementById('current-icon').src = info.icon;
-      document.getElementById('current-label').textContent = info.label;
-      document.getElementById('contract').textContent = truncate(info.contract);
-      document.getElementById('options-container').style.display = 'none';
-      if (typeof umami !== 'undefined' && umami.track) {
-        umami.track(`Network Selected: ${info.label}`);
-      }
-    }
+function selectNetwork(key, track = false) {
+  current = key;
+  const info = networks[key];
+  document.getElementById('current-icon').src = info.icon;
+  document.getElementById('current-label').textContent = info.label;
+  document.getElementById('contract').textContent = truncate(info.contract);
+  document.getElementById('options-container').style.display = 'none';
+
+  if (track && typeof umami !== 'undefined' && umami.track) {
+    umami.track(`Network Selected: ${info.label}`);
+  }
+}
 
     function truncate(addr) { return addr.slice(0,6)+'...'+addr.slice(-6) }
 
