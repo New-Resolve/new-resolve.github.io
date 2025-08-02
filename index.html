@@ -333,12 +333,12 @@
         const data = await response.json();
         const assets = data.assets;
         
-        const filePatterns = {
+	const filePatterns = {
           windows: /\.msi$/,
           debian: /\.debian-bookworm_amd64\.deb$/,
-          ubuntu: /\.ubuntu-noble_amd64\.deb$/,
-          kali: /\.kali-kali\.deb$/,
-          fedora: /\.fc40\.x86_64\.rpm$/
+          ubuntu: /\.ubuntu-noble_amd64\.deb$/,          
+          fedora: /\.fc40\.x86_64\.rpm$/,
+          kali: /\.kali-kali-rolling_amd64\.deb$/,
         };
         
         for (const [platform, pattern] of Object.entries(filePatterns)) {
