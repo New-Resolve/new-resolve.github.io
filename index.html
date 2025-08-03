@@ -65,7 +65,61 @@
   <script defer src="https://cloud.umami.is/script.js" data-website-id="629cb4ba-11b5-4b6f-b02e-657d8b6aba61"></script>
   <title>Deceptgold - Tokenizing cyberattacks</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
-  <style>
+
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('pitchBtn');
+  const menu = document.getElementById('pitchMenu');
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation(); // evita fechar imediatamente
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', function () {
+    menu.style.display = 'none'; // fecha quando clica fora
+  });
+});
+</script>
+
+    <style>
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  bottom: 100%; /* abre para cima */
+  left: 0;
+  background: rgba(0,0,0,.85);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  min-width: 140px;
+  z-index: 100;
+  margin-bottom: 6px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255,255,255,.1);
+}
+/* Aqui está o truque: mantém aberto enquanto o mouse estiver no botão OU no menu */
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}
     * { margin:0; padding:0; box-sizing:border-box }
     body,html { height:100%; overflow:hidden; font-family:'Rajdhani',sans-serif }
     body { display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff; text-shadow:4px 4px 12px rgba(0,0,0,.9); padding:20px; text-align:center; position:relative }
@@ -279,11 +333,19 @@
     </button>
   </div>
 
-  <div class="links">	
-    <a href="https://github.com/New-Resolve/deceptgold/blob/master/documentation/whitepaper.md" class="btn" data-label="Whitepaper" target="_blank">📄 Whitepaper</a>
-    <a href="pitch_en.html" class="btn" data-label="Pitch" target="_blank">🎤 Pitch</a>
-    <a href="https://testnet.bscscan.com/token/0x606c0fE69D437F42BfC11D3eec82F596cC02C02a" class="btn" data-label="Explorer" target="_blank">🔍 Explorer</a>
+  <div class="links">
+  <a href="https://github.com/New-Resolve/deceptgold/blob/master/documentation/whitepaper.md" class="btn" target="_blank">📄 Whitepaper</a>
+
+  <div class="dropdown">
+    <button class="btn" id="pitchBtn">🎤 Pitch ▴</button>
+    <div class="dropdown-content" id="pitchMenu">
+      <a href="pitch_en.html" target="_blank">🇺🇸 English</a>
+      <a href="pitch_pt.html" target="_blank">🇧🇷 Português</a>
+    </div>
   </div>
+
+  <a href="https://testnet.bscscan.com/token/0x606c0fE69D437F42BfC11D3eec82F596cC02C02a" class="btn" target="_blank">🔍 Explorer</a>
+</div>
   
   <br/><br/><br/>
   <img src="deceptgold_service.gif" alt="honeypot commands service" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
@@ -310,7 +372,7 @@
       <p id="form-status" style="font-size: 0.85rem; margin-top: 6px;"></p>
     </form>
   </div>
-<iframe src="https://gamma.app/embed/oovgmgyumz58oym" style="width: 1024px; max-width: 100%; height: 800px" allow="fullscreen" title="DeceptGold: Redefinindo a defesa cibernética"></iframe>
+
   <script>
     const networks = {
       eth: {
