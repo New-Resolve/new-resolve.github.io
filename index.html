@@ -15,7 +15,15 @@ gtag('config', 'AW-17372945409');
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-81LDMD127M');
-  </script>
+  
+  // Simple Analytics event tracking
+  function saTrack(event, properties = {}) {
+    if (typeof sa !== 'undefined' && sa.event) {
+      sa.event(event, properties);
+    }
+    console.log('SA Event:', event, properties);
+  }
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="description" content="Honeypot to convert cyberattacks into valuable assets. Free honeypot for Fedora, Debian and Ubuntu, creating cryptocurrency in self-custody.">
@@ -490,14 +498,21 @@ function selectNetwork(key, track = false) {
   if (track && typeof umami !== 'undefined' && umami.track) {
     umami.track(`Network Selected: ${info.label}`);
   }
-  if (track) gaTrack('network_select', { label: info.label });
+  if (track) {
+    gaTrack('network_select', { label: info.label });
+    saTrack('network_select', { label: info.label });
+  }
 }
 
     function truncate(addr) { return addr.slice(0,6)+'...'+addr.slice(-6) }
 
     function copyContract() {
       navigator.clipboard.writeText(networks[current].contract)
-        .then(() => { console.log('Copied!'); gaTrack('copy_contract', { network: current }); });
+        .then(() => { 
+          console.log('Copied!'); 
+          gaTrack('copy_contract', { network: current });
+          saTrack('copy_contract', { network: current });
+        });
     }
 
     async function addToMetamask() {
@@ -515,6 +530,7 @@ function selectNetwork(key, track = false) {
             }
           });
           gaTrack('metamask_watch_asset', { network: current });
+          saTrack('metamask_watch_asset', { network: current });
         } catch (e) { console.error(e) }
       } else alert('To add the token to your wallet, install the MetaMask browser extension.');
     }
@@ -524,9 +540,12 @@ function selectNetwork(key, track = false) {
       selectNetwork('eth');
       document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const label = btn.dataset.label;
+          const label = btn.dataset.label || btn.textContent.trim();
           if (typeof umami !== 'undefined' && umami.track) umami.track(label);
-          if (label) gaTrack('ui_click', { label });
+          if (label) {
+            gaTrack('ui_click', { label });
+            saTrack('ui_click', { label });
+          }
         });
       });
       document.querySelectorAll('.download-btn').forEach(a => {
@@ -534,12 +553,14 @@ function selectNetwork(key, track = false) {
           const id = a.id || '';
           const platform = id.split('-')[0] || 'unknown';
           gaTrack('download', { platform });
+          saTrack('download', { platform });
         });
       });
       document.querySelectorAll('.nav-link').forEach(a => {
         a.addEventListener('click', () => {
           const label = a.textContent.trim();
           gaTrack('nav_click', { label });
+          saTrack('nav_click', { label });
         });
       });
       const navDownload = document.getElementById('nav-download');
@@ -550,6 +571,7 @@ function selectNetwork(key, track = false) {
           if (url) {
             e.preventDefault();
             gaTrack('download', { platform });
+            saTrack('download', { platform });
             window.location.href = url;
           }
         });
@@ -558,6 +580,7 @@ function selectNetwork(key, track = false) {
         a.addEventListener('click', () => {
           const label = a.textContent.trim();
           gaTrack('pitch_language', { label });
+          saTrack('pitch_language', { label });
         });
       });
       const contactNav = document.getElementById('contact-nav');
@@ -567,6 +590,7 @@ function selectNetwork(key, track = false) {
           e.preventDefault();
           contactBtn.click();
           gaTrack('nav_click', { label: 'Contact' });
+          saTrack('nav_click', { label: 'Contact' });
         });
       }
     });
@@ -595,6 +619,7 @@ function selectNetwork(key, track = false) {
         if (typeof umami !== 'undefined' && umami.track) {
 		umami.track("Contact Button");
 	}
+        saTrack('contact_button_open');
         popup.style.display = popup.style.display === "block" ? "none" : "block";
       });
 
