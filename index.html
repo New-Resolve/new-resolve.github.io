@@ -9,7 +9,7 @@ gtag('js', new Date());
 gtag('config', 'AW-17372945409');
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-81LDMD127M"></script>
-<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<script async defer src="https://scripts.simpleanalyticscdn.com/auto.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -490,14 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function selectNetwork(key, track = false) {
   current = key;
   const info = networks[key];
-  document.getElementById('current-icon').src = info.icon;
-  document.getElementById('current-label').textContent = info.label;
-  document.getElementById('contract').textContent = truncate(info.contract);
-  document.getElementById('options-container').style.display = 'none';
-
-  if (track && typeof umami !== 'undefined' && umami.track) {
-    umami.track(`Network Selected: ${info.label}`);
-  }
+  // Elements removed - no network selector in header anymore
   if (track) {
     gaTrack('network_select', { label: info.label });
     saTrack('network_select', { label: info.label });
@@ -595,12 +588,7 @@ function selectNetwork(key, track = false) {
       }
     });
 
-    document.addEventListener('click', e => {
-      const container = document.querySelector('.custom-select-container');
-      if (!container.contains(e.target)) {
-        document.getElementById('options-container').style.display = 'none';
-      }
-    });
+    // Network selector removed - no click outside handling needed
  </script>
  
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -626,16 +614,19 @@ function selectNetwork(key, track = false) {
       form.addEventListener("submit", (e) => {
 		  e.preventDefault();
 		  status.textContent = "Sending...";
+		  saTrack('contact_form_submit_start');
 
 		  emailjs.sendForm('service_9e2wfdx', 'template_upgni6j', form)
 			.then(() => {
 			  console.log("Email enviado com sucesso!");	
 			  status.textContent = "Message sent. We will contact you.";
 			  form.reset();
+			  saTrack('contact_form_submit_success');
 			})
 			.catch((err) => {
 			  console.error('EmailJS error:', err);
-			  status.textContent = "Error contacting.";
+			  status.textContent = "Error contacting. Please try again.";
+			  saTrack('contact_form_submit_error', { error: err.message || 'unknown' });
 			});
 		});
     });
