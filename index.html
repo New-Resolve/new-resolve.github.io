@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17372945409"></script>
- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-17372945409');
- </script>	
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-81LDMD127M"></script>
-  <script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17372945409"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17372945409');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-81LDMD127M"></script>
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -123,9 +124,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     h1 { font-size:8vw; max-width:90%; line-height:1.2; letter-spacing:3px; text-transform:uppercase }
     .contract-container {
-      margin-top:20px; display:flex; gap:8px; align-items:center;
-      background:rgba(0,0,0,.5); padding:8px 12px; border-radius:8px;
-      border:1px solid rgba(255,255,255,.2); backdrop-filter:blur(4px); max-width:400px;
+      position:fixed; bottom:80px; right:20px; z-index:998;
+      display:flex; gap:8px; align-items:center;
+      background:rgba(0,0,0,.35); padding:6px 10px; border-radius:8px;
+      border:1px solid rgba(255,255,255,.18); backdrop-filter:blur(4px); max-width:340px;
     }
     .contract-text { color:#fff; font-size:1rem; font-family:'Rajdhani',sans-serif; width:150px; white-space:nowrap }
     .btn, .copy-btn, .metamask-btn {
@@ -191,6 +193,18 @@ document.addEventListener('DOMContentLoaded', function () {
       .download-btn{width:120px;padding:16px}
       .icon-wrapper{width:60px;height:60px}
     }
+    .site-header { position:fixed; top:0; left:0; right:0; backdrop-filter: blur(6px); background:rgba(0,0,0,.45); border-bottom:1px solid rgba(255,255,255,.12); z-index:1000 }
+    .header-row { display:flex; align-items:center; justify-content:space-between; padding:14px 20px }
+    .logo { font-weight:800; letter-spacing:1px }
+    .nav { display:flex; gap:18px }
+    .nav a { color:#fff; text-decoration:none; font-weight:600; opacity:.95 }
+    .nav a:hover { opacity:1 }
+    .container { width:min(1200px, 100% - 32px); margin:0 auto }
+    .section { padding:48px 0 }
+    .section-title { text-align:center; font-size:1.8rem; margin-bottom:18px; letter-spacing:1px }
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; width:min(1200px, 100% - 32px); margin:0 auto }
+    .card { background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.15); border-radius:12px; padding:16px; text-align:left }
+    .card h3 { font-size:1.1rem; margin-bottom:6px }
     
     #contact-button {
       position: fixed;
@@ -272,13 +286,24 @@ document.addEventListener('DOMContentLoaded', function () {
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="logo">DeceptGold</div>
+      <nav class="nav">
+        <a href="#downloads" id="nav-download" class="nav-link" data-label="Nav Download">Download</a>
+        <a href="https://github.com/New-Resolve/deceptgold" target="_blank" rel="noopener" class="nav-link" data-label="Nav GitHub">GitHub</a>
+        <a href="https://github.com/New-Resolve/deceptgold/blob/master/docs/content/Whitepaper.md" target="_blank" rel="noopener" class="nav-link" data-label="Nav Whitepaper">Whitepaper</a>
+        <a href="#" id="contact-nav" class="nav-link" data-label="Nav Contact">Contact</a>
+      </nav>
+    </div>
+  </header>
   <div class="background-blur"></div>
   <video autoplay muted loop playsinline id="background-video">
     <source src="attack_map.mp4" type="video/mp4">
   </video>
   <h1>The more attacks,<br/>the more revenue.</h1>
 
-  <div class="download-section">
+  <div id="downloads" class="download-section">
     <div class="download-buttons">
       <a id="windows-download" class="download-btn" target="_blank">
         <div class="icon-wrapper btn" data-label="Download Windows">
@@ -307,6 +332,24 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>kali
       </a>
     </div>
+
+  <section class="section">
+    <h2 class="section-title">Why DeceptGold</h2>
+    <div class="features-grid">
+      <div class="card">
+        <h3>Rapid deployment</h3>
+        <p>Install on common Linux distros or Windows and start collecting signals in minutes.</p>
+      </div>
+      <div class="card">
+        <h3>Controlled engagement</h3>
+        <p>Isolated, instrumented services designed to safely attract and observe adversary behavior.</p>
+      </div>
+      <div class="card">
+        <h3>Actionable intelligence</h3>
+        <p>Export telemetry and IOCs to your workflows and tooling to improve defense.</p>
+      </div>
+    </div>
+  </section>
   </div>
 
   <div class="contract-container">
@@ -358,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   <div id="contact-popup" style="display:none; position: fixed; bottom: 90px; left: 30px; background: #111; padding: 12px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.6); width: 280px; z-index: 998;">
     <div style="display: flex; justify-content: space-between; gap: 10px; margin-bottom: 10px;">
-      <a href="https://wa.me/5521999958191" target="_blank" style="flex: 1; text-align: center; background: #075e54; color: white; padding: 8px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+      <a href="https://wa.me/5521972750119" target="_blank" style="flex: 1; text-align: center; background: #075e54; color: white; padding: 8px; border-radius: 6px; text-decoration: none; font-weight: bold;">
         <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" style="vertical-align: middle; margin-right: 4px;">WhatsApp
       </a>
       <a href="https://t.me/jonathansmorais" target="_blank" style="flex: 1; text-align: center; background: #229ED9; color: white; padding: 8px; border-radius: 6px; text-decoration: none; font-weight: bold;">
@@ -388,6 +431,25 @@ document.addEventListener('DOMContentLoaded', function () {
       }    
     };
 
+    let latestAssetLinks = {};
+
+    function getPreferredPlatform() {
+      const ua = navigator.userAgent || '';
+      if (/Windows/i.test(ua)) return 'windows';
+      if (/Ubuntu/i.test(ua)) return 'ubuntu';
+      if (/Debian/i.test(ua)) return 'debian';
+      if (/Fedora/i.test(ua)) return 'fedora';
+      if (/Kali/i.test(ua)) return 'kali';
+      if (/Linux/i.test(ua)) return 'ubuntu';
+      return null;
+    }
+
+    function gaTrack(name, params={}) {
+      if (typeof gtag === 'function') {
+        gtag('event', name, params);
+      }
+    }
+
     async function updateDownloadLinks() {
       try {
         const response = await fetch('https://api.github.com/repos/New-Resolve/deceptgold/releases/latest');
@@ -410,12 +472,14 @@ document.addEventListener('DOMContentLoaded', function () {
           if (asset) {
             const link = document.getElementById(`${platform}-download`);
             link.href = asset.browser_download_url;
+            latestAssetLinks[platform] = asset.browser_download_url;
           } else {
             console.warn(`File for ${platform} not found.`);
             const link = document.getElementById(`${platform}-download`);
             link.style.opacity = '0.5';
             link.style.pointerEvents = 'none';
             link.title = 'Download unavailable';
+            latestAssetLinks[platform] = null;
           }
         }
       } catch (error) {
@@ -439,13 +503,14 @@ function selectNetwork(key, track = false) {
   if (track && typeof umami !== 'undefined' && umami.track) {
     umami.track(`Network Selected: ${info.label}`);
   }
+  if (track) gaTrack('network_select', { label: info.label });
 }
 
     function truncate(addr) { return addr.slice(0,6)+'...'+addr.slice(-6) }
 
     function copyContract() {
       navigator.clipboard.writeText(networks[current].contract)
-        .then(() => console.log('Copied!'));
+        .then(() => { console.log('Copied!'); gaTrack('copy_contract', { network: current }); });
     }
 
     async function addToMetamask() {
@@ -462,6 +527,7 @@ function selectNetwork(key, track = false) {
               }
             }
           });
+          gaTrack('metamask_watch_asset', { network: current });
         } catch (e) { console.error(e) }
       } else alert('Install MetaMask');
     }
@@ -473,8 +539,49 @@ function selectNetwork(key, track = false) {
         btn.addEventListener('click', () => {
           const label = btn.dataset.label;
           if (typeof umami !== 'undefined' && umami.track) umami.track(label);
+          if (label) gaTrack('ui_click', { label });
         });
       });
+      document.querySelectorAll('.download-btn').forEach(a => {
+        a.addEventListener('click', () => {
+          const id = a.id || '';
+          const platform = id.split('-')[0] || 'unknown';
+          gaTrack('download', { platform });
+        });
+      });
+      document.querySelectorAll('.nav-link').forEach(a => {
+        a.addEventListener('click', () => {
+          const label = a.textContent.trim();
+          gaTrack('nav_click', { label });
+        });
+      });
+      const navDownload = document.getElementById('nav-download');
+      if (navDownload) {
+        navDownload.addEventListener('click', (e) => {
+          const platform = getPreferredPlatform();
+          const url = platform ? latestAssetLinks[platform] : null;
+          if (url) {
+            e.preventDefault();
+            gaTrack('download', { platform });
+            window.location.href = url;
+          }
+        });
+      }
+      document.querySelectorAll('#pitchMenu a').forEach(a => {
+        a.addEventListener('click', () => {
+          const label = a.textContent.trim();
+          gaTrack('pitch_language', { label });
+        });
+      });
+      const contactNav = document.getElementById('contact-nav');
+      const contactBtn = document.getElementById('contact-button');
+      if (contactNav && contactBtn) {
+        contactNav.addEventListener('click', (e) => {
+          e.preventDefault();
+          contactBtn.click();
+          gaTrack('nav_click', { label: 'Contact' });
+        });
+      }
     });
 
     document.addEventListener('click', e => {
