@@ -288,7 +288,18 @@ document.addEventListener('DOMContentLoaded', function () {
 <body>
   <header class="site-header">
     <div class="container header-row">
-      <div class="logo">DeceptGold</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div class="logo">DeceptGold</div>
+        <div style="display:flex; align-items:center; gap:4px; background:rgba(255,255,255,.1); padding:4px 8px; border-radius:6px;">
+          <span style="font-size:0.8rem; opacity:0.9; font-family:monospace;">0x606c...C02a</span>
+          <button onclick="copyContract()" style="background:none; border:none; cursor:pointer; padding:1px;" title="Copy Contract">
+            <img src="https://img.icons8.com/material-outlined/16/ffffff/copy.png" alt="Copy">
+          </button>
+          <button onclick="addToMetamask()" style="background:none; border:none; cursor:pointer; padding:1px;" title="Add to MetaMask">
+            <img src="https://img.icons8.com/color/16/000000/metamask-logo.png" alt="MetaMask">
+          </button>
+        </div>
+      </div>
       <nav class="nav">
         <a href="#downloads" id="nav-download" class="nav-link" data-label="Nav Download">Download</a>
         <a href="https://github.com/New-Resolve/deceptgold" target="_blank" rel="noopener" class="nav-link" data-label="Nav GitHub">GitHub</a>
@@ -350,30 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
   </section>
-  </div>
-
-  <div class="contract-container">
-    <div class="custom-select-container">
-      <div class="select-trigger" onclick="toggleOptions()">
-        <img id="current-icon" src="https://img.cryptorank.io/coins/60x60.ethereum1524754015525.png" alt="Network">
-        <span id="current-label">Ethereum</span>
-      </div>
-      <div class="options-container" id="options-container">
-        <div class="option" data-value="eth" onclick="selectNetwork('eth', true)">
-          <img src="https://img.icons8.com/color/48/000000/ethereum.png" alt="Ethereum"> ETH
-        </div>
-        <div class="option" data-value="bsc" onclick="selectNetwork('bsc', true)">
-          <img src="https://img.cryptorank.io/coins/60x60.bnb1732530324407.png" alt="Binance Smart Chain"> BSC
-        </div>
-      </div>
-    </div>
-    <span class="contract-text" id="contract"></span>
-    <button class="copy-btn btn" data-label="Copy Contract" onclick="copyContract()">
-      <img src="https://img.icons8.com/material-outlined/24/ffffff/copy.png" style="width:20px;height:20px" alt="Copiar">
-    </button>
-    <button class="metamask-btn btn" data-label="Add to Metamask" onclick="addToMetamask()">
-      <img src="https://img.icons8.com/color/48/000000/metamask-logo.png" style="width:20px;height:20px" alt="MetaMask">
-    </button>
   </div>
 
   <div class="links">
@@ -529,7 +516,7 @@ function selectNetwork(key, track = false) {
           });
           gaTrack('metamask_watch_asset', { network: current });
         } catch (e) { console.error(e) }
-      } else alert('Install MetaMask');
+      } else alert('To add the token to your wallet, install the MetaMask browser extension.');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
